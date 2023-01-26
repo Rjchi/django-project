@@ -40,10 +40,15 @@ from django.http import HttpResponse
 # 
 
 
-def unaFuncion(request):
+def unaFuncion(request, usuario):
+    print(usuario)
     # Con HttpResponse Retornamos los datos de un modelo.
-    return HttpResponse("<h2>Hello World</h2>")
+    # con %s() %(reemplace) podemos concatenear una variable en el dom
+    return HttpResponse("<h2>Hello %s</h2>" % usuario)
 
 
 def about(request):
     return HttpResponse('About')
+
+def index(request):
+    return HttpResponse("Index Page")

@@ -8,8 +8,11 @@ from myapp import views
 from . import views
 
 urlpatterns = [
-    path('', views.unaFuncion),
-    # Con esto decimos que entre en la ruta 'ruta/ruta.com/ y que ejecute una funcion que esta dentro de views
-    # esta funcion actua como un documento html en este caso (por asi decirlo) 
-    path('about/', views.about)
+    path('', views.index),
+    # Con esto decimos que entre en la ruta 'ruta/ruta.com/' y que ejecute una funcion que esta dentro de views
+    # esta funcion actua como un documento html en este caso (por asi decirlo)
+    path('about/', views.about),
+    # Con esto lo que hacemos es crear una variable que esperamos, y extraerla con la funcion
+    # tambien podemos hacerlo con un int ejm: hello/<int:id>
+    path('hello/<str:usuario>', views.unaFuncion),
 ]
