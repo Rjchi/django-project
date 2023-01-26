@@ -16,7 +16,8 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
-# Application definition
+# Esta seccion nos permite poder conectar nuestro proyecto con el
+# visualizador de la base de datos (DB Browser for SQlite)
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -25,6 +26,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Con esto la aplicacion principal (mysite) reconoce la nueva carpeta (myapp)
+    'myapp',
 ]
 
 MIDDLEWARE = [
