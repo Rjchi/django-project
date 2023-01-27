@@ -1,0 +1,43 @@
+{% extends 'layouts/base.html' %}
+
+{% block nombre_aqui %}
+
+<h1>Task</h1>
+<hr>
+
+<!-- Esto es sintaxis jinja2 ver documentacion https://jinja.palletsprojects.com/en/3.1.x/ -->
+<!-- Es un modulo -->
+
+{% for task in tasks %}
+
+<div>
+    <!-- Aqui ponemos condiciones dentro de un solo elemento -->
+    <p>{% if task.done == False %} ⏱{% else %} ✅ {% endif %} {{task.title}}</p>
+
+    <!-- Hacemos uso de condicionales para saber si una tarea ya esta hecha o no -->
+
+    {% if task.done == False %}
+
+    <p>Tarea pendiente</p>
+    {% else %}
+    <p>Tarea realizada</p>
+
+    {% endif %}
+
+    <p>{{task.description}}</p>
+    <p>{{task.project_id.name}}</p>
+    <p>{{task.done}}</p>
+
+    <button>
+        Delete
+    </button>
+
+    <button>
+        Done
+    </button>
+
+</div>
+
+{% endfor %}
+
+{% endblock %}
