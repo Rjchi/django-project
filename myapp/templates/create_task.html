@@ -1,0 +1,44 @@
+{% extends 'layouts/base.html' %}
+
+{% block nombre_aqui %}
+
+<h2>Create new task</h2>
+
+<!-- Django nos permite crear formularios por medio de codigo python -->
+<!-- para ello vamos a crear un nuevo archivo llamado forms.py -->
+<b>ASI por medio de python:</b>
+<br>
+<!-- Este metodo es para que el servidor reciba los datos que el usuario ha ingresado -->
+<form method="POST">
+    <!-- El CSRF es un tipo de exploit (aprovechar una vulnerabilidad) malicioso de un sitio web en el que comandos no autorizados
+        son transmitidos por un usuario en el cual el sitio web confía.​
+        Esta vulnerabilidad es conocida también por otros nombres como secuestro de sesión -->
+
+        <!-- Y para dar solución a este problema se debe crear este token: -->
+
+    {% csrf_token %}
+    <!-- Cuando nosotros creamos los formularios de esta manera 
+    ellos tienen una propiedad que nosotros podemos llamar -->
+    <!-- Con esta propiedad le decimos que guarde los inputs dentro de un elemento p -->
+    {{forms.as_p}}
+    <br>
+    <button>Save</button>
+</form>
+<!-- 
+<br>
+<hr>
+<b>o ASI por medio de html simple:</b>
+<br>
+<br>
+<form action="">
+    <input type="text" placeholder="Title" name="titulo">
+    <br><br>
+    <textarea name="description" cols="30" rows="10" name="descripcion" placeholder="Description"></textarea>
+    <br>
+    <input type="checkbox" id="cbx1">
+    <label for="cbx1">Done</label>
+    <br><br>
+    <button>Save</button>
+</form> -->
+
+{% endblock %}

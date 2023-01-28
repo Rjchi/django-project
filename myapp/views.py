@@ -2,11 +2,14 @@
 # entender
 from django.http import HttpResponse, JsonResponse
 # fn + f1 settings (JSON) ---> "editor.wordWarp": "on"
-# Importamos render para renderizar paginas
-from django.shortcuts import render
+# Importamos render para renderizar paginas y redirect para redireccionar al usuario a otra ruta
+from django.shortcuts import render, redirect
 
 # Importamos los modelos para hacer consultas a la base de datos
 from .models import tabla_uno_project, modelo_tareas_del_project
+
+# Importamos el formulario que hemos creado por medio de codigo python
+from .forms import create_new_task, create_new_project
 
 # Devolvemos una pagina 404 en caso de un error a traves de una funcion
 # propia de django
@@ -60,20 +63,24 @@ from django.shortcuts import get_object_or_404
 # la carpeta templetes (que creamos) la cual contiene archivos HTML
 # Asi (primero importamos render):
 
+
 def index(request):
     # Dato de ejemplo:
-    title = 'Django Cours' # para mostrar este dato en el archivo html se lo pasamos como un tercer
+    # para mostrar este dato en el archivo html se lo pasamos como un tercer
+    title = 'Django Cours'
     # parametro a render en este caso.
     # y ahora index tiene la variable title
     return render(request, 'index.html', {
         'title': title
     })
 
+
 def about(request):
     username = 'Richi'
     return render(request, 'about.html', {
-        'username' : username
+        'username': username
     })
+
 
 def unaFuncion(request, usuario):
     # Con HttpResponse Retornamos los datos de un modelo.
@@ -89,7 +96,7 @@ def projectos(request):
     # Utilizamos el JsonResponse
     # return JsonResponse(projects, safe=False)
     return render(request, 'projects.html', {
-        'projects' : projects
+        'projects': projects
     })
 
 
@@ -102,5 +109,46 @@ def tareas(request):
     # task = get_object_or_404(modelo_tareas_del_project, id = id)
     # return HttpResponse('task: %s' % task.title)
     return render(request, 'task.html', {
-        'tasks' : tasks
+        'tasks': tasks
     })
+
+
+def create_task(request):
+    # Ahora vamos ha hacer una validacion (si me estan visitando a traves del metodo GET mostrar interfaz)
+    if request.method == 'GET':
+        # Mostrar interfaz
+        # En el tercer paremetro le vamos a pasar el formulario recien creado en forms.py
+        return render(request, 'create_task.html', {
+        # Con esto generamos el nuevo formulario
+            'forms': create_new_task()
+        })
+    # Y este es por si me visitan desde el metodo post (para guardar los datos del formulario)
+    else:
+        # Para insertar los valores en la base de datos podemos hacer uso del metodo GET
+        # que lo que hace es tomar la consulta que hace el usuario de la url
+        # por medio del name= que le dimos a los inputs
+        # modelo_tareas_del_project.objects.create(title=request.GET['title'],
+        #                                          description=request.GET['description'],
+        #                                          project_id=2)
+
+        modelo_tareas_del_project.objects.create(title=request.POST['title'],
+                                                  description=request.POST['description'],
+                                                  project_id=2)
+        # Y aqui redireccionamos al usuario a la pagina que lista las tareas
+        # Y aqui lo que decimos es desde la ruta inicial "/" mandame a "task/"
+      # return redirect('/task/')
+
+        # Aqui estamos haciendo uso de los nombres que le dimos a las rutas en myapp/urls.py 
+        return redirect('task')
+
+# Funcion para crear proyectos desde un formulario
+def create_project(request):
+    if request.method == 'GET':
+        return render(request, 'create_project.html', {
+            'forms' : create_new_project()
+        })
+    else:
+        tabla_uno_project.objects.create(name=request.POST['name'])
+        # return redirect('/projects/')
+        # haciendo uso del name= para las urls
+        return redirect('projects')

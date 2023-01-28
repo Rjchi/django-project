@@ -1,0 +1,16 @@
+{% extends 'layouts/base.html' %} 
+
+{% block nombre_aqui %}
+
+<h2>Create new Project</h2>
+
+<form method="POST">
+    
+    {% csrf_token %} 
+    {{forms}}
+    <br>
+    <button>Save</button>
+</form>
+
+
+{% endblock %}

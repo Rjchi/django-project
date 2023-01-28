@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    # Esto es para los archivos estaticos
     'django.contrib.staticfiles',
     # Esto nos permite conectar nuestro proyecto principal (mysite) con la aplicacion nueva (myapp)
     'myapp',
@@ -119,8 +120,17 @@ USE_I18N = True
 USE_TZ = True
 
 
+# LOS ARCHIVOS DINAMICOS (van cambiando) son por ejemplo una aplicacion de reservas
+# los precios las opiniones las calificaciones van cambiando constantemente
+# contenido  que el servidor va cambiando dinamicamente
+
+# Y LOS ARCHIVOS ESTATICOS no cambian como cuando cargamos un css ya que el css no es preprocesado
+# por el servidor al igual que imagenes, audios, pdfs etc
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
+
+# Aqui podemos decirle a django donde van a estar los archivos estaticos
 
 STATIC_URL = 'static/'
 
