@@ -31,6 +31,8 @@ from django.shortcuts import get_object_or_404
 # 5- Ejecutar .\venv\Scripts\activate para activar el entorno virtual
 # 6- Ejecutar code .
 # 7- Si se tiene problemas con la activacion instalar la extension powerShell
+# 7.1 - La primera vez debes que cambiar la politica de seguridad en Windows para que te permita ejecutarlos.
+# 7.2 - Ejecutar: Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 # 8- Ejecutar en el powerShell .\venv\Scripts\activate.ps1 (verificar la extension del archivo)
 # 9- Ejecutar pip install django
 # 10- Podemos ver la version con el siguiente comando django-admin --version
