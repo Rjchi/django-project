@@ -42,6 +42,9 @@ from django.shortcuts import get_object_or_404
 # 13- Los proyectos de django se dividen en carpetas denominadas Apps para crearlas ejecutar
 # python manage.py startapp Nombre (no usar django (palabras reservadas) para evitar errores)
 # Ctrl + C (Break)
+# 14- En caso de trabajar con la DB mysql ejecutar despues de configurar la conexion pip install pymysql
+# 15- Y importar en el init.py del nucleo del proyecto import pymysql y tambien pymysql.install_as_MySQLdb()
+# 16- y tambien en senttings.py import pymysql y pymysql.install_as_MySQLdb()
 
 # Nota: Django nos genera una base de datos que podemos utilizar en el desarrollo
 # en producción debemos cambiarla por otro motor
