@@ -25,8 +25,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    # Esto es para los archivos estaticos
     'django.contrib.staticfiles',
-    # Con esto la aplicacion principal (mysite) reconoce la nueva carpeta (myapp)
+    # Esto nos permite conectar nuestro proyecto principal (mysite) con la aplicacion nueva (myapp)
     'myapp',
 ]
 
@@ -63,6 +64,22 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
+# Aqui podemos modificar  la conexion por otra conexion a base de datos
+# por defecto viene con SQLite
+# Al conectarnos a otra base de datos se requeriran parametros adicionales
+# ejemplo:
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'mydatabase',
+#         'USER': 'mydatabaseuser',
+#         'PASSWORD': 'mypassword',
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432',
+#     }
+# }
+# ver documentación
 
 DATABASES = {
     'default': {
@@ -103,8 +120,17 @@ USE_I18N = True
 USE_TZ = True
 
 
+# LOS ARCHIVOS DINAMICOS (van cambiando) son por ejemplo una aplicacion de reservas
+# los precios las opiniones las calificaciones van cambiando constantemente
+# contenido  que el servidor va cambiando dinamicamente
+
+# Y LOS ARCHIVOS ESTATICOS no cambian como cuando cargamos un css ya que el css no es preprocesado
+# por el servidor al igual que imagenes, audios, pdfs etc
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
+
+# Aqui podemos decirle a django donde van a estar los archivos estaticos
 
 STATIC_URL = 'static/'
 

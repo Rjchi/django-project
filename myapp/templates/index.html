@@ -1,0 +1,28 @@
+<!-- Sintaxis de jinja para traer un documento HTML con la navegacion (en este caso) -->
+
+<!-- Aqui le decimos que esto hereda de base.html -->
+{% extends 'layouts/base.html' %}
+
+<!-- Esto es para los archivos estaticos -->
+<!-- Con esto le decimos aqui voy a estar cargando contenido estatico -->
+{% load static %}
+
+<!-- Esto es para que el contenido que teniamos no sea reemplazado por solo la navegacion que tenemos en
+base.html -->
+<!-- ver documento base.html -->
+{% block nombre_aqui %}
+
+<h1>{{title}}</h1>
+
+<!-- Ejemplo del uso de archivos estaticos -->
+
+<img src="{% static 'perfil.png' %}" alt="Probando archivos estaticos" width="100" >
+
+<hr>
+<p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos voluptate magni voluptatem laboriosam aliquam?
+    Temporibus aliquid, rerum ad corrupti pariatur fugiat! Perferendis necessitatibus nostrum earum voluptate odio
+    quisquam laborum nam.
+</p>
+
+{% endblock %}
