@@ -14,6 +14,12 @@ class tabla_uno_project(models.Model):
     # Con CharField(aqui va la longitud) es como decir que name va a ser de tipo caracter
     name = models.CharField(max_length=50)
 
+    # Con esto hacemos que nos muestre desde el panel de admin
+    # el nombre de los projectos
+    def __str__(self):
+        return self.name
+
+
 # Para ejecutar las migraciones es decir los modelos, ejecutar python manage.py makemigrations myapp
 # o python manage.py makemigrations
 # Con ese comando le decimos que queremos hacer nuevas migraciones en el proyecto a la base de datos
@@ -31,6 +37,13 @@ class modelo_tareas_del_project(models.Model):
     #  y con CASCADE le estamos diciendo que cuando se elimine un dato se debe eliminar tambien los datos
     # que tiene relacion con el
     project = models.ForeignKey(tabla_uno_project, on_delete=models.CASCADE)
+    # Le decimos que va a tener un valor por defecto en False
+    # SIEMPRE SE DEBE MIGRAR CUANDO HACEMOS ESTE TIPO DE CAMBIOS
+    done = models.BooleanField(default=False)
+
+    # El self es una referencia a la misma clase
+    def __str__(self):
+        return f"{self.title} - {self.description} - {self.project.name}"
 
 
 # Ejecutar python manage.py shell para poder interactuar con un shell especifico de django

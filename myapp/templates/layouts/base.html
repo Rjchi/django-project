@@ -1,0 +1,31 @@
+<!-- ESTO SERIA LA HERENCIA DE TEMPLATES (PLANTILLAS) -->
+
+
+<!-- Con este documento podemos reutilizar la navegacion(en este caso) para todos los documentos-->
+<!-- HTML que queramos -->
+
+<nav>
+    <ul>
+        <li>
+            <a href="/">Home</a>
+        </li>
+        <li>
+            <a href="/projects">Projects</a>
+        </li>
+        <li>
+            <a href="/task">Task</a>
+        </li>
+        <li>
+            <a href="/hello/Richi">Hello</a>
+        </li>
+        <li>
+            <a href="/about">About</a>
+        </li>
+    </ul>
+</nav>
+
+<!-- Esto sirve para indicarle al base.html que aqui abajo va ir otro contenido  -->
+<!-- y la pagina que lo herede va a poder utilizar para su contenido -->
+
+{% block nombre_aqui %}
+{% endblock %}
