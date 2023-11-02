@@ -1,0 +1,20 @@
+<!-- Sintaxis de jinja para traer un documento HTML con la navegacion (en este caso) -->
+
+<!-- Aqui le decimos que esto hereda de base.html -->
+{% extends 'layouts/base.html' %}
+
+
+<!-- Esto es para que el contenido que teniamos no sea reemplazado por solo la navegacion que tenemos en
+base.html -->
+<!-- ver documento base.html -->
+{% block nombre_aqui %}
+
+<h1>{{title}}</h1>
+<hr>
+<p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos voluptate magni voluptatem laboriosam aliquam?
+    Temporibus aliquid, rerum ad corrupti pariatur fugiat! Perferendis necessitatibus nostrum earum voluptate odio
+    quisquam laborum nam.
+</p>
+
+{% endblock %}

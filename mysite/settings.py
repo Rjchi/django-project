@@ -16,7 +16,8 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
-# Application definition
+# Esta seccion nos permite poder conectar nuestro proyecto con el
+# visualizador de la base de datos (DB Browser for SQlite)
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -25,6 +26,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Esto nos permite conectar nuestro proyecto principal (mysite) con la aplicacion nueva (myapp)
+    'myapp',
 ]
 
 MIDDLEWARE = [
@@ -60,6 +63,22 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
+# Aqui podemos modificar  la conexion por otra conexion a base de datos
+# por defecto viene con SQLite
+# Al conectarnos a otra base de datos se requeriran parametros adicionales
+# ejemplo:
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'mydatabase',
+#         'USER': 'mydatabaseuser',
+#         'PASSWORD': 'mypassword',
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432',
+#     }
+# }
+# ver documentación
 
 DATABASES = {
     'default': {

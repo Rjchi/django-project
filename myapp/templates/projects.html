@@ -1,0 +1,14 @@
+{% extends 'layouts/base.html' %}
+
+{% block nombre_aqui %}
+
+<h1>Projects</h1>
+<hr>
+<!-- Con esto recorremos la lista projects utilizando un bucle for-->
+{% for project in projects %}
+
+<h1>{{project.name}}</h1>
+<!-- Y le decimos que aqui termina el bucle for -->
+{% endfor %}
+
+{% endblock %}
